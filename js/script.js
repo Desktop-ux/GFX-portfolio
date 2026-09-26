@@ -139,6 +139,20 @@ document.querySelectorAll('.short-card').forEach(card=>{
     });
   }
 });
+document.querySelectorAll('.motion-card').forEach(card => {
+  const vid = card.querySelector('video');
+
+  if (!vid) return;
+
+  card.addEventListener('mouseenter', () => {
+    vid.play().catch(() => {});
+  });
+
+  card.addEventListener('mouseleave', () => {
+    vid.pause();
+    vid.currentTime = 0;
+  });
+});
 
 /* ---------- long-form rows: hover play ---------- */
 document.querySelectorAll('.lf-row').forEach(row=>{
@@ -179,3 +193,5 @@ gsap.utils.toArray('.lf-row').forEach(row=>{
 ScrollTrigger.create({
   start:'top -80', end: 99999, toggleClass:{targets:'header', className:'scrolled'}
 });
+
+
