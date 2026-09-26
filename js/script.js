@@ -155,13 +155,62 @@ document.querySelectorAll('.motion-card').forEach(card => {
 });
 
 /* ---------- long-form rows: hover play ---------- */
-document.querySelectorAll('.lf-row').forEach(row=>{
+document.querySelectorAll('.lf-row').forEach(row => {
   const vid = row.querySelector('video');
-  if(!vid) return;
-  row.addEventListener('mouseenter', ()=>{ if(vid.currentSrc) vid.play().catch(()=>{}); });
-  row.addEventListener('mouseleave', ()=>{ vid.pause(); vid.currentTime = 0; });
-});
+  const playBtn = row.querySelector('.lf-play');
+  const soundBtn = row.querySelector('.lf-sound');
 
+  if (!vid) return;
+
+  row.addEventListener('mouseenter', () => {
+    vid.muted = true;
+
+    vid.play()
+      .then(() => {
+        row.classList.add('is-playing');
+      })
+      .catch(() => {});
+  });
+
+  row.addEventListener('mouseleave', () => {
+    vid.pause();
+    vid.currentTime = 0;
+    vid.muted = true;
+
+    row.classList.remove('is-playing');
+
+    if (soundBtn) {
+      soundBtn.textContent = '🔇';
+    }
+  });
+
+  if (playBtn) {
+    playBtn.addEventListener('click', e => {
+      e.stopPropagation();
+
+      if (vid.paused) {
+        vid.play()
+          .then(() => {
+            row.classList.add('is-playing');
+          })
+          .catch(() => {});
+      } else {
+        vid.pause();
+        row.classList.remove('is-playing');
+      }
+    });
+  }
+
+  if (soundBtn) {
+    soundBtn.addEventListener('click', e => {
+      e.stopPropagation();
+
+      vid.muted = !vid.muted;
+
+      soundBtn.textContent = vid.muted ? '🔇' : '🔊';
+    });
+  }
+});
 /* ---------- shorts strip: mouse-drag horizontal scroll ---------- */
 const shortsTrack = document.getElementById('shortsTrack');
 if(shortsTrack){
