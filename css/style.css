@@ -502,6 +502,7 @@
 }
 
 /* ---------- motion graphics ---------- */
+/* ---------- motion graphics ---------- */
 
 .motion-grid {
   display:grid;
@@ -520,20 +521,14 @@
   position:relative;
   aspect-ratio:16 / 9;
   overflow:hidden;
-  background:
-    radial-gradient(
-      circle at 50% 50%,
-      #3049a8 0%,
-      #111a35 45%,
-      #070b14 100%
-    );
+  background:#080d18;
 }
 
 .motion-visual video {
   width:100%;
   height:100%;
-  object-fit:cover;
   display:block;
+  object-fit:cover;
   transition:transform .7s cubic-bezier(.16,1,.3,1);
 }
 
@@ -544,30 +539,65 @@
 .motion-overlay {
   position:absolute;
   inset:0;
-  z-index:2;
-  padding:20px;
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-start;
+  z-index:3;
   pointer-events:none;
 }
 
 .motion-index {
-  font-size:11px;
+  position:absolute;
+  top:20px;
+  left:20px;
   color:var(--paper);
+  font-size:11px;
+}
+
+.motion-play,
+.motion-sound {
+  position:absolute;
+  z-index:5;
+  border:1px solid rgba(255,255,255,.35);
+  background:rgba(8,12,22,.45);
+  color:#fff;
+  backdrop-filter:blur(8px);
+  cursor:pointer;
+  transition:
+    opacity .3s ease,
+    transform .3s ease,
+    background .3s ease;
+  pointer-events:auto;
 }
 
 .motion-play {
-  width:42px;
-  height:42px;
-  border:1px solid rgba(255,255,255,.35);
+  top:50%;
+  left:50%;
+  width:58px;
+  height:58px;
   border-radius:50%;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:11px;
-  background:rgba(5,8,15,.35);
-  backdrop-filter:blur(8px);
+  transform:translate(-50%,-50%);
+}
+
+.motion-sound {
+  top:20px;
+  right:20px;
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.motion-card.is-playing .motion-play {
+  opacity:0;
+  pointer-events:none;
+}
+
+.motion-play:hover,
+.motion-sound:hover {
+  background:var(--blue-2);
 }
 
 .motion-info {
@@ -606,8 +636,7 @@
   color:var(--paper);
   text-decoration:none;
   transform:rotate(-45deg);
-  transition:
-    .4s ease;
+  transition:.4s ease;
 }
 
 .motion-arrow:hover {
@@ -615,7 +644,6 @@
   border-color:var(--blue-2);
   transform:rotate(0deg);
 }
-
 
 /* ---------- thumbnail design ---------- */
 

@@ -244,3 +244,59 @@ ScrollTrigger.create({
 });
 
 
+document.querySelectorAll('.motion-card').forEach(card => {
+  const vid = card.querySelector('video');
+  const playBtn = card.querySelector('.motion-play');
+  const soundBtn = card.querySelector('.motion-sound');
+
+  if (!vid) return;
+
+  card.addEventListener('mouseenter', () => {
+    vid.muted = true;
+
+    vid.play()
+      .then(() => {
+        card.classList.add('is-playing');
+      })
+      .catch(() => {});
+  });
+
+  card.addEventListener('mouseleave', () => {
+    vid.pause();
+    vid.currentTime = 0;
+    vid.muted = true;
+
+    card.classList.remove('is-playing');
+
+    if (soundBtn) {
+      soundBtn.textContent = '🔇';
+    }
+  });
+
+  if (playBtn) {
+    playBtn.addEventListener('click', e => {
+      e.stopPropagation();
+
+      if (vid.paused) {
+        vid.play()
+          .then(() => {
+            card.classList.add('is-playing');
+          })
+          .catch(() => {});
+      } else {
+        vid.pause();
+        card.classList.remove('is-playing');
+      }
+    });
+  }
+
+  if (soundBtn) {
+    soundBtn.addEventListener('click', e => {
+      e.stopPropagation();
+
+      vid.muted = !vid.muted;
+
+      soundBtn.textContent = vid.muted ? '🔇' : '🔊';
+    });
+  }
+});
