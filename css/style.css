@@ -885,3 +885,908 @@
 .lf-row video {
   cursor:pointer;
 }
+
+
+/* =========================================================
+   SELECTED WORK
+========================================================= */
+
+.selected-work {
+  position: relative;
+  margin-top: 140px;
+}
+
+
+/* ---------- HEADER ---------- */
+
+.selected-work-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 460px;
+  gap: 70px;
+  align-items: end;
+  margin-bottom: 52px;
+}
+
+.selected-work-title {
+  position: relative;
+  padding-left: 34px;
+}
+
+.selected-work-title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 18px;
+  width: 1px;
+  height: 70px;
+  background: var(--line-strong);
+}
+
+.selected-eyebrow {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--ice);
+  font-size: 11px;
+  letter-spacing: .28em;
+}
+
+.selected-heading {
+  margin: 0;
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: clamp(52px, 6vw, 82px);
+  line-height: .92;
+  letter-spacing: -.055em;
+  text-transform: uppercase;
+  color: var(--paper);
+}
+
+.selected-heading span {
+  background: linear-gradient(
+    100deg,
+    #ffffff 0%,
+    #ffffff 42%,
+    #aab8ff 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.selected-intro {
+  margin: 18px 0 0;
+  color: var(--ice);
+  font-size: 12px;
+  line-height: 1.65;
+  letter-spacing: .2em;
+}
+
+.selected-work-meta {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 40px;
+  align-items: start;
+}
+
+.selected-description {
+  border-left: 1px solid var(--line-strong);
+  padding-left: 30px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.selected-count {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 125px;
+  color: var(--ice);
+  font-size: 11px;
+  letter-spacing: .08em;
+}
+
+.selected-count strong {
+  color: var(--paper);
+  font-weight: 400;
+}
+
+.selected-count span {
+  color: var(--muted);
+}
+
+
+/* ---------- GRID ---------- */
+
+.selected-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+
+/* ---------- CARD ---------- */
+
+.selected-card {
+  position: relative;
+  min-height: 255px;
+  overflow: hidden;
+  border: 1px solid var(--line-strong);
+  border-radius: 11px;
+  background: #070c15;
+  isolation: isolate;
+}
+
+.selected-card-feature {
+  grid-column: 1 / -1;
+  min-height: 295px;
+}
+
+
+/* ---------- IMAGE ---------- */
+
+.selected-image {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+}
+
+.selected-image img,
+.selected-image video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition:
+    transform .8s cubic-bezier(.16, 1, .3, 1),
+    filter .8s ease;
+}
+
+.selected-card:hover .selected-image img,
+.selected-card:hover .selected-image video {
+  transform: scale(1.045);
+}
+
+
+/* ---------- IMAGE POSITIONING ---------- */
+
+.selected-card-feature .selected-image img {
+  object-position: center;
+}
+
+.selected-card:nth-child(2) .selected-image img {
+  object-position: center;
+}
+
+.selected-card:nth-child(3) .selected-image img {
+  object-position: center;
+}
+
+.selected-card:nth-child(4) .selected-image video {
+  object-position: center;
+}
+
+.selected-card:nth-child(5) .selected-image img {
+  object-position: center;
+}
+
+
+/* ---------- DARK OVERLAY ---------- */
+
+.selected-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(4, 8, 15, .96) 0%,
+      rgba(4, 8, 15, .86) 25%,
+      rgba(4, 8, 15, .38) 54%,
+      rgba(4, 8, 15, .12) 100%
+    );
+}
+
+.selected-card-feature .selected-overlay {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(4, 8, 15, .96) 0%,
+      rgba(4, 8, 15, .82) 25%,
+      rgba(4, 8, 15, .38) 48%,
+      rgba(4, 8, 15, .12) 72%,
+      rgba(4, 8, 15, .42) 100%
+    );
+}
+
+
+/* ---------- CONTENT ---------- */
+
+.selected-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  min-height: inherit;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.selected-card-feature .selected-content {
+  padding: 36px 30px;
+}
+
+
+/* ---------- TOP ---------- */
+
+.selected-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.selected-card-top > div {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.selected-number {
+  color: var(--paper);
+  font-size: 16px;
+  line-height: 1;
+}
+
+.selected-line {
+  width: 30px;
+  height: 1px;
+  background: var(--paper);
+  opacity: .8;
+}
+
+.selected-category {
+  color: var(--ice);
+  font-size: 10px;
+  letter-spacing: .16em;
+}
+
+.selected-index {
+  color: var(--ice);
+  font-size: 10px;
+  opacity: .85;
+}
+
+
+/* ---------- BOTTOM ---------- */
+
+.selected-card-bottom {
+  max-width: 310px;
+}
+
+.selected-card-feature .selected-card-bottom {
+  max-width: 410px;
+}
+
+.selected-card-bottom h3 {
+  margin: 0;
+  color: var(--paper);
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: clamp(28px, 3vw, 40px);
+  line-height: .95;
+  letter-spacing: -.035em;
+}
+
+.selected-card-feature .selected-card-bottom h3 {
+  font-size: clamp(38px, 4.2vw, 58px);
+}
+
+.selected-card-bottom p {
+  margin: 14px 0 22px;
+  color: var(--ice);
+  font-size: 11px;
+  line-height: 1.55;
+  letter-spacing: .06em;
+}
+
+
+/* ---------- ACTION ---------- */
+
+.selected-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  color: var(--paper);
+  text-decoration: none;
+}
+
+.selected-arrow {
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255,255,255,.7);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  transform: rotate(-45deg);
+  transition:
+    transform .35s ease,
+    background .35s ease,
+    border-color .35s ease;
+}
+
+.selected-action .mono {
+  font-size: 10px;
+  letter-spacing: .18em;
+}
+
+.selected-card:hover .selected-arrow {
+  transform: rotate(0deg);
+  background: var(--blue-2);
+  border-color: var(--blue-2);
+}
+
+
+/* ---------- FEATURE TOOLS ---------- */
+
+.selected-tools {
+  position: absolute;
+  z-index: 3;
+  top: 27px;
+  right: 27px;
+  width: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  color: var(--ice);
+  font-size: 8px;
+  line-height: 1.4;
+  letter-spacing: .12em;
+  text-align: right;
+}
+
+.selected-tools i {
+  width: 20px;
+  height: 1px;
+  margin: 8px 0;
+  background: var(--paper);
+}
+
+.selected-tools small {
+  font-size: 9px;
+  letter-spacing: .08em;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1000px) {
+
+  .selected-work-head {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .selected-work-meta {
+    max-width: 600px;
+  }
+
+  .selected-card-feature {
+    min-height: 330px;
+  }
+
+}
+
+
+@media (max-width: 700px) {
+
+  .selected-work {
+    margin-top: 90px;
+  }
+
+  .selected-work-head {
+    margin-bottom: 35px;
+  }
+
+  .selected-work-title {
+    padding-left: 22px;
+  }
+
+  .selected-heading {
+    font-size: clamp(42px, 12vw, 64px);
+  }
+
+  .selected-intro {
+    font-size: 10px;
+  }
+
+  .selected-work-meta {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .selected-description {
+    padding-left: 20px;
+  }
+
+  .selected-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .selected-card-feature {
+    grid-column: auto;
+    min-height: 390px;
+  }
+
+  .selected-card {
+    min-height: 330px;
+  }
+
+  .selected-content,
+  .selected-card-feature .selected-content {
+    padding: 24px;
+  }
+
+  .selected-card-feature .selected-card-bottom h3 {
+    font-size: 42px;
+  }
+
+  .selected-card-bottom h3 {
+    font-size: 34px;
+  }
+
+  .selected-tools {
+    display: none;
+  }
+
+}
+
+
+@media (max-width: 480px) {
+
+  .selected-card-feature {
+    min-height: 360px;
+  }
+
+  .selected-card {
+    min-height: 300px;
+  }
+
+  .selected-card-top > div {
+    gap: 9px;
+  }
+
+  .selected-category {
+    font-size: 8px;
+  }
+
+  .selected-card-feature .selected-card-bottom h3 {
+    font-size: 36px;
+  }
+
+}
+
+/* =========================================================
+   STATIC CREATIVES
+========================================================= */
+
+.creative-section {
+  position: relative;
+  margin-top: 150px;
+}
+
+
+/* ---------- TOOLBAR ---------- */
+
+.creative-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-top: -8px;
+  margin-bottom: 34px;
+}
+
+.creative-description {
+  margin: 0;
+
+  color: var(--muted);
+
+  font-size: 10px;
+  letter-spacing: .16em;
+}
+
+.creative-navigation {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  color: var(--ice);
+
+  font-size: 9px;
+  letter-spacing: .16em;
+}
+
+.creative-nav-arrow {
+  font-size: 17px;
+
+  transition:
+    transform .3s ease,
+    color .3s ease;
+}
+
+.creative-section:hover .creative-nav-arrow {
+  transform: translateX(5px);
+  color: var(--paper);
+}
+
+
+/* ---------- VIEWPORT ---------- */
+
+.creative-viewport {
+  position: relative;
+
+  width: 100%;
+
+  overflow: hidden;
+}
+
+
+/* ---------- TRACK ---------- */
+
+.creative-track {
+  display: flex;
+
+  gap: 18px;
+
+  width: max-content;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  padding: 2px 0 12px;
+
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  cursor: grab;
+
+  user-select: none;
+}
+
+.creative-track::-webkit-scrollbar {
+  display: none;
+}
+
+.creative-track:active {
+  cursor: grabbing;
+}
+
+
+/* ---------- CARD ---------- */
+
+.creative-card {
+  position: relative;
+
+  flex: 0 0 clamp(270px, 25vw, 350px);
+
+  scroll-snap-align: start;
+}
+
+
+/* ---------- MEDIA ---------- */
+
+.creative-media {
+  position: relative;
+
+  width: 100%;
+
+  aspect-ratio: 4 / 5;
+
+  overflow: hidden;
+
+  border: 1px solid var(--line);
+
+  border-radius: 8px;
+
+  background: #070c15;
+}
+
+
+/* ---------- IMAGE ---------- */
+
+.creative-media img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  pointer-events: none;
+
+  transition:
+    transform .9s cubic-bezier(.16, 1, .3, 1),
+    filter .6s ease;
+}
+
+.creative-card:hover .creative-media img {
+  transform: scale(1.035);
+  filter: brightness(1.05);
+}
+
+
+/* ---------- OVERLAY ---------- */
+
+.creative-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(4, 8, 15, 0) 45%,
+      rgba(4, 8, 15, .18) 62%,
+      rgba(4, 8, 15, .92) 100%
+    );
+
+  pointer-events: none;
+}
+
+
+/* ---------- NUMBER ---------- */
+
+.creative-no {
+  position: absolute;
+
+  top: 15px;
+  left: 15px;
+
+  z-index: 3;
+
+  color: var(--paper);
+
+  font-size: 10px;
+  letter-spacing: .08em;
+}
+
+
+/* ---------- INFO ---------- */
+
+.creative-card-info {
+  position: absolute;
+
+  left: 20px;
+  right: 55px;
+  bottom: 18px;
+
+  z-index: 3;
+}
+
+.creative-card-info span {
+  display: block;
+
+  margin-bottom: 6px;
+
+  color: var(--blue-3);
+
+  font-size: 8px;
+  letter-spacing: .16em;
+}
+
+.creative-card-info h3 {
+  margin: 0;
+
+  color: var(--paper);
+
+  font-family: "Bricolage Grotesque", sans-serif;
+
+  font-size: 19px;
+  line-height: 1.05;
+
+  letter-spacing: -.025em;
+}
+
+
+/* ---------- ARROW ---------- */
+
+.creative-arrow {
+  position: absolute;
+
+  right: 16px;
+  bottom: 17px;
+
+  z-index: 4;
+
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(255,255,255,.45);
+
+  border-radius: 50%;
+
+  color: var(--paper);
+
+  background: rgba(5, 8, 15, .3);
+
+  backdrop-filter: blur(8px);
+
+  font-size: 15px;
+
+  transition:
+    background .3s ease,
+    border-color .3s ease,
+    transform .3s ease;
+}
+
+.creative-card:hover .creative-arrow {
+  background: var(--blue-2);
+
+  border-color: var(--blue-2);
+
+  transform: rotate(45deg);
+}
+
+
+/* ---------- PROGRESS ---------- */
+
+.creative-progress {
+  display: flex;
+
+  align-items: center;
+
+  gap: 18px;
+
+  margin-top: 22px;
+
+  color: var(--muted);
+
+  font-size: 9px;
+
+  letter-spacing: .1em;
+}
+
+.creative-progress-line {
+  width: 180px;
+  height: 1px;
+
+  position: relative;
+
+  background: var(--line);
+}
+
+.creative-progress-line span {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 18%;
+
+  height: 1px;
+
+  background: var(--blue-3);
+
+  transition: width .3s ease;
+}
+
+
+/* =========================================================
+   DESKTOP
+========================================================= */
+
+@media (min-width: 1200px) {
+
+  .creative-card {
+    flex-basis: 320px;
+  }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .creative-section {
+    margin-top: 110px;
+  }
+
+  .creative-card {
+    flex-basis: 290px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .creative-section {
+    margin-top: 90px;
+  }
+
+  .creative-toolbar {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 15px;
+  }
+
+  .creative-card {
+    flex-basis: 245px;
+  }
+
+  .creative-track {
+    gap: 12px;
+  }
+
+  .creative-card-info {
+    left: 15px;
+    bottom: 15px;
+  }
+
+  .creative-card-info h3 {
+    font-size: 17px;
+  }
+
+  .creative-arrow {
+    right: 12px;
+    bottom: 14px;
+  }
+
+}
+
+.creative-track {
+  display: flex;
+  gap: 18px;
+
+  width: 100%;
+  max-width: 100%;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  padding: 2px 0 18px;
+
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  cursor: grab;
+  user-select: none;
+}
+
+.creative-track::-webkit-scrollbar {
+  display: none;
+}
+
+.creative-track:active {
+  cursor: grabbing;
+}
+
+.creative-card {
+  flex: 0 0 320px;
+  scroll-snap-align: start;
+}

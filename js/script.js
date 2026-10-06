@@ -300,3 +300,49 @@ document.querySelectorAll('.motion-card').forEach(card => {
     });
   }
 });
+const creativeViewport = document.querySelector(".creative-viewport");
+const creativeTrack = document.querySelector("#creativeTrack");
+
+if (creativeViewport && creativeTrack) {
+  let isDragging = false;
+  let startX = 0;
+  let startScroll = 0;
+
+  creativeTrack.addEventListener("mousedown", (e) => {
+    isDragging = true;
+    startX = e.pageX;
+    startScroll = creativeTrack.scrollLeft;
+
+    creativeTrack.style.cursor = "grabbing";
+    creativeTrack.style.scrollBehavior = "auto";
+  });
+
+  window.addEventListener("mouseup", () => {
+    isDragging = false;
+
+    creativeTrack.style.cursor = "grab";
+    creativeTrack.style.scrollBehavior = "smooth";
+  });
+
+  creativeTrack.addEventListener("mousemove", (e) => {
+    if (!isDragging) return;
+
+    e.preventDefault();
+
+    const distance = e.pageX - startX;
+
+    creativeTrack.scrollLeft = startScroll - distance;
+  });
+
+  creativeViewport.addEventListener(
+    "wheel",
+    (e) => {
+      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+        e.preventDefault();
+
+        creativeTrack.scrollLeft += e.deltaY;
+      }
+    },
+    { passive: false }
+  );
+}
