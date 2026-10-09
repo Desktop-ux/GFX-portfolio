@@ -2144,3 +2144,126 @@
     white-space: nowrap;
   }
 }
+
+
+/* About Profile Photo */
+.about-photo {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  min-height: 600px;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  isolation: isolate;
+  background: #0b1224;
+  border: 1px solid var(--line);
+  border-radius: 0;
+}
+
+/* Photo */
+.about-photo > img {
+  position: absolute;
+  inset: 18px;
+  width: calc(100% - 36px);
+  height: calc(100% - 36px);
+  display: block;
+  object-fit: cover;
+  object-position: center 35%;
+  transition: transform 0.7s ease;
+}
+
+.about-photo:hover > img {
+  transform: scale(1.025);
+}
+
+/* Bottom gradient */
+.about-photo::after {
+  content: "";
+  position: absolute;
+  inset: 45% 18px 18px;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(5, 9, 20, 0.85) 100%
+  );
+}
+
+/* Photo labels */
+.about-photo-overlay {
+  position: absolute;
+  z-index: 2;
+  left: 34px;
+  right: 34px;
+  bottom: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.about-photo-name {
+  color: #f1f4ff;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.about-photo-role {
+  color: #9aafd9;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+}
+
+/* Top corner label */
+.about-photo-index {
+  position: absolute;
+  z-index: 2;
+  top: 30px;
+  right: 30px;
+  padding: 8px 10px;
+  color: #dce6ff;
+  background: rgba(5, 9, 20, 0.65);
+  border: 1px solid rgba(180, 200, 255, 0.25);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .about-photo {
+    min-height: 450px;
+  }
+}
+
+@media (max-width: 600px) {
+  .about-photo {
+    min-height: 380px;
+    aspect-ratio: 4 / 4.5;
+  }
+
+  .about-photo > img {
+    inset: 12px;
+    width: calc(100% - 24px);
+    height: calc(100% - 24px);
+  }
+
+  .about-photo::after {
+    inset: 45% 12px 12px;
+  }
+
+  .about-photo-overlay {
+    left: 24px;
+    right: 24px;
+    bottom: 26px;
+  }
+
+  .about-photo-name {
+    font-size: 23px;
+  }
+
+  .about-photo-index {
+    top: 22px;
+    right: 22px;
+  }
+}
