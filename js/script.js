@@ -346,3 +346,61 @@ if (creativeViewport && creativeTrack) {
     { passive: false }
   );
 }
+
+
+const creativeGrid = document.querySelector("#creativeGrid");
+const creativeMore = document.querySelector("#creativeMore");
+const creativeCount = document.querySelector("#creativeCount");
+const creativeTotal = document.querySelector("#creativeTotal");
+const creativeFooter = document.querySelector("#creativeFooter");
+
+if (creativeGrid && creativeMore) {
+  const cards = Array.from(creativeGrid.querySelectorAll(".creative-card"));
+  const initialVisible = 7;
+  const batchSize = 7;
+  let visibleCount = initialVisible;
+
+  cards.forEach((card, index) => {
+    card.hidden = index >= initialVisible;
+  });
+
+  const updateCreativeGallery = () => {
+    cards.forEach((card, index) => {
+      card.hidden = index >= visibleCount;
+    });
+
+    const total = String(cards.length).padStart(2, "0");
+    const visible = String(Math.min(visibleCount, cards.length)).padStart(2, "0");
+
+    if (creativeCount) creativeCount.textContent = total;
+    if (creativeTotal) {
+      creativeTotal.textContent = `${visible} / ${total} PROJECTS`;
+    }
+
+    if (cards.length <= initialVisible) {
+      creativeFooter.hidden = true;
+      return;
+    }
+
+    creativeFooter.hidden = false;
+
+    if (visibleCount >= cards.length) {
+      creativeMore.innerHTML = 'VIEW LESS <span>↑</span>';
+    } else {
+      creativeMore.innerHTML = 'VIEW MORE <span>↓</span>';
+    }
+  };
+
+  creativeMore.addEventListener("click", () => {
+    if (visibleCount >= cards.length) {
+      visibleCount = initialVisible;
+      updateCreativeGallery();
+      creativeGrid.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else {
+      visibleCount = Math.min(visibleCount + batchSize, cards.length);
+      updateCreativeGallery();
+    }
+  });
+
+  updateCreativeGallery();
+}
